@@ -79,7 +79,8 @@ class NotificationsTableViewCell: UITableViewCell {
         // ios 9 constraint anchors
         // need x,y,width,height anchors
         notificationLabel.leftAnchor.constraint(equalTo: contactImage.rightAnchor, constant: 6).isActive = true
-        notificationLabel.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor).isActive = true
+//        notificationLabel.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor).isActive = true
+        notificationLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         
         notificationRightAnchorWithFollowButton =  notificationLabel.rightAnchor.constraint(equalTo: followButton.leftAnchor, constant: -15)
 //        notificationRightAnchorWithFollowButton?.isActive = true

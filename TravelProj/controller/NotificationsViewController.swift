@@ -10,6 +10,7 @@ import UIKit
 
 class NotificationsViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
     
+    let notificationTableCell = NotificationsTableViewCell()
     @IBOutlet weak var tableView: UITableView!
     let cellId = "cellId"
     let cell = NotificationsTableViewCell()
@@ -33,6 +34,10 @@ class NotificationsViewController: UIViewController , UITableViewDelegate , UITa
         // Do any additional setup after loading the view.
         
         self.tableView?.register(NotificationsTableViewCell.self, forCellReuseIdentifier: cellId)
+//        self.tableView.separatorStyle = .none
+        self.tableView.separatorStyle = .singleLine
+        tableView.tableFooterView = UIView()
+
         
         view.addSubview(menuBtn)
         
@@ -60,7 +65,18 @@ class NotificationsViewController: UIViewController , UITableViewDelegate , UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+//        return 75
+//       return notificationTableCell.notificationLabel.c
+        
+        let hieght: CGFloat?
+        if indexPath.row % 2 == 0 {
+            handelFollowButtonCostraint(cell: cell, flag: false)
+            hieght = 90
+        }else{
+            handelFollowButtonCostraint(cell: cell, flag: true)
+            hieght = 70
+        }
+        return hieght!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +87,7 @@ class NotificationsViewController: UIViewController , UITableViewDelegate , UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId ) as! NotificationsTableViewCell
         if indexPath.row % 2 == 0 {
             handelFollowButtonCostraint(cell: cell, flag: false)
+            
         }else{
             handelFollowButtonCostraint(cell: cell, flag: true)
         }
